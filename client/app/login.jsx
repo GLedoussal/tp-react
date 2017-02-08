@@ -9,6 +9,22 @@ const textStyle = { width: "100%" };
 const buttonWrapperStype = { textAlign: "center", marginTop: "25px" };
 
 export default class Login extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {nickname: ''};
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(e) {
+    this.setState({nickname: e.target.value});
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+  }
+
   render() {
     return (
       <MuiThemeProvider>
@@ -17,10 +33,15 @@ export default class Login extends React.Component {
             title="Login"
           />
           <CardText>
-            <form>
-                <TextField name="nickname" floatingLabelText="Nickname" style={textStyle}></TextField>
+            <form onSubmit={this.handleSubmit}>
+                <TextField
+                name="nickname"
+                floatingLabelText="Nickname"
+                value={this.state.nickname}
+                onChange={this.handleChange}
+                style={textStyle}></TextField>
                 <div style={buttonWrapperStype}>
-                  <FlatButton label="Connect" rippleColor="primary"></FlatButton>
+                  <FlatButton label="Connect" rippleColor="primary" type="submit"></FlatButton>
                 </div>
             </form>
           </CardText>
