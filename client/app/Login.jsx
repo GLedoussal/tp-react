@@ -41,7 +41,7 @@ export default class Login extends React.Component {
                 onChange={this.handleChange}
                 style={textStyle}></TextField>
                 <div style={buttonWrapperStype}>
-                  <FlatButton label="Connect" rippleColor="primary" type="submit"></FlatButton>
+                  <FlatButton label="Connect" type="submit"></FlatButton>
                 </div>
             </form>
           </CardText>
