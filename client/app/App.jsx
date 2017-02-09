@@ -2,6 +2,7 @@ import React from 'react'
 import Login from './Login'
 import Messages from './Messages'
 import Sidebar from './Sidebar'
+import InputBox from './InpubBox'
 
 import ws from './Socket'
 
@@ -46,6 +47,7 @@ export default class App extends React.Component {
           <Sidebar users={this.state.users}/>
           <div style={{paddingLeft:"256px"}}>
             <Messages />
+            <InputBox />
           </div>
         </div>
       )
