@@ -8,11 +8,10 @@ import ws from './Socket'
 // TODO get the usersList
 
 export default class Sidebar extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      users: []
+      users: this.props.users
     };
 
     ws.on('useradd', (user) => {

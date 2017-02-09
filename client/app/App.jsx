@@ -10,8 +10,13 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       isLoggedIn: false,
-      loginError: null
+      loginError: null,
+      users: []
     };
+  }
+
+  componentWillMount(){
+    ws.on('userslist', users => this.setState({users}));
   }
 
   onLoginDone(nick){
@@ -37,7 +42,7 @@ export default class App extends React.Component {
       // TODO Draw the chat UI
       return (
         <div>
-          <Sidebar />
+          <Sidebar users={this.state.users}/>
           <div style={{paddingLeft:"256px"}}>
             <Messages />
           </div>
