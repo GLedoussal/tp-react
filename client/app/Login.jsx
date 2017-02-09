@@ -21,6 +21,7 @@ export default class Login extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.props.onLoginDone(this.state.nickname);
   }
 
   render() {
