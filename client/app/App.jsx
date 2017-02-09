@@ -4,18 +4,18 @@ import Login from './Login'
 export default class App extends React.Component {
 
   constructor(props) {
-      super(props);
-      this.state = {isLoggedIn: true};
+    super(props);
+    this.state = {isLoggedIn: true};
   }
 
     render() {
       if (!this.state.isLoggedIn) {
-          return <Login />;
-        } else {
-          // TODO Draw the chat UI
-          return (
-            <div style="padding-left:256px;"></div>
-          )
-        }
+        return <Login />;
+      } else {
+        // TODO Draw the chat UI
+        return (
+          <div style="padding-left:256px;"></div>
+        )
+      }
     }
 }
