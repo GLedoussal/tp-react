@@ -45,10 +45,8 @@ export default class App extends React.Component {
       return (
         <div>
           <Sidebar users={this.state.users}/>
-          <div style={{paddingLeft:"256px"}}>
-            <Messages />
-            <InputBox />
-          </div>
+          <Messages />
+          <InputBox />
         </div>
       )
     }

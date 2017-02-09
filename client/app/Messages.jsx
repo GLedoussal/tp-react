@@ -19,10 +19,12 @@ export default class Messages extends React.Component {
 
   render() {
     return (
-      <div>
-        {this.state.messages.map((message) => {
-          return <Message message={message} />
-        })}
+      <div style={{position: "fixed", right: "0", top: "0", left: "0", height: "100%", overflow: "auto"}}>
+        <div style={{paddingBottom: "115px", paddingLeft: "256px"}}>
+          {this.state.messages.map((message) => {
+            return <Message message={message} />
+          })}
+        </div>
       </div>
     )
   }

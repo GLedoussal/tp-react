@@ -1,5 +1,8 @@
 import React from 'react'
 import ws from './Socket'
+import FlatButton from 'material-ui/FlatButton';
+import TextField from 'material-ui/TextField';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 export default class App extends React.Component {
   constructor(props){
@@ -26,12 +29,22 @@ export default class App extends React.Component {
   }
 
   render(){
-    return <input
-      type="text"
-      onChange={this.handleChange.bind(this)}
-      onKeyDown={this.handleKeyDown.bind(this)}
-      placeholder="Your message…"
-      value={this.state.message || ''}
-    />
+    return (
+      <MuiThemeProvider>
+        <div className="input-wrapper" style={{position: "fixed", bottom: "0", height: "115px", right: "0", width: "100%", backgroundColor: "rgb(255,255,255)"}}>
+          <div style={{paddingLeft: "256px"}}>
+            <div style={{padding: "15px"}}>
+              <TextField
+              type="text"
+              onChange={this.handleChange.bind(this)}
+              onKeyDown={this.handleKeyDown.bind(this)}
+              floatingLabelText="Message"
+              style={{width: "100%"}}
+              value={this.state.message || ''} />
+            </div>
+          </div>
+        </div>
+      </MuiThemeProvider>
+    )
   }
 }

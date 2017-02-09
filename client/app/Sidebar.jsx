@@ -29,13 +29,13 @@ export default class Sidebar extends React.Component {
 
   render() {
     const userItems = this.state.users.map((user) =>
-      <MenuItem>{user.nickname}</MenuItem>
+      <div className="user">{user.nickname}</div>
     );
     return(
       <MuiThemeProvider>
         <div>
-          <Drawer open={true}>
-            <h2 style={{paddingLeft: "25%"}}>Utilisateurs</h2>
+          <Drawer open={true} containerStyle={{backgroundColor: "rgb(51, 69, 87)", padding: "15px"}}>
+            <h2 style={{color: "#a9a9a9", paddingBottom: "15px", borderBottom: "1px solid rgb(41, 55, 70)"}}>En ligne</h2>
             {userItems}
           </Drawer>
         </div>
