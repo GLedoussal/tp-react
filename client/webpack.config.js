@@ -56,6 +56,10 @@ const common = {
         new HtmlWebpackIncludeAssetsPlugin({
             assets: ['css/normalize.css'],
             append: false
+        }),
+        new HtmlWebpackIncludeAssetsPlugin({
+            assets: ['css/global.css'],
+            append: true
         })
     ],
     module: {

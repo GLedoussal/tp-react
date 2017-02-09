@@ -1,0 +1,17 @@
+body {
+	font-size: 12px;
+}
+
+html, body {
+    height: 100%;
+}
+
+.user {
+	line-height: 36px;
+	color: #a9a9a9;
+	font-size: 13px;
+}
+
+.input-wrapper {
+	box-shadow: rgba(0, 0, 0, 0.156863) 0px 3px 10px, rgba(0, 0, 0, 0.227451) 0px 3px 10px;
+}
