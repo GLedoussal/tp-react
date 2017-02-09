@@ -35,7 +35,7 @@ export default class Sidebar extends React.Component {
       <MuiThemeProvider>
         <div>
           <Drawer open={true} containerStyle={{backgroundColor: "rgb(51, 69, 87)", padding: "15px"}}>
-            <h2 style={{color: "#a9a9a9", paddingBottom: "15px", borderBottom: "1px solid rgb(41, 55, 70)"}}>En ligne</h2>
+            <h2 style={{color: "#a9a9a9", paddingBottom: "15px", borderBottom: "1px solid rgb(41, 55, 70)"}}>Online</h2>
             {userItems}
           </Drawer>
         </div>
