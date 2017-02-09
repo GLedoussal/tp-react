@@ -13,8 +13,6 @@ export default class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {nickname: ''};
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
@@ -33,12 +31,12 @@ export default class Login extends React.Component {
             title="Login"
           />
           <CardText>
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit.bind(this)}>
                 <TextField
                 name="nickname"
                 floatingLabelText="Nickname"
                 value={this.state.nickname}
-                onChange={this.handleChange}
+                onChange={this.handleChange.bind(this)}
                 style={textStyle}></TextField>
                 <div style={buttonWrapperStype}>
                   <FlatButton label="Connect" type="submit"></FlatButton>
