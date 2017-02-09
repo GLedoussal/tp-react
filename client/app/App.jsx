@@ -2,7 +2,7 @@ import React from 'react'
 import Login from './Login'
 import Messages from './Messages'
 import Sidebar from './Sidebar'
-import InputBox from './InpubBox'
+import InputBox from './InputBox'
 
 import ws from './Socket'
 
