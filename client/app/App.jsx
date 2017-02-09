@@ -26,6 +26,7 @@ export default class App extends React.Component {
           loginError: reply.error,
           isLoggedIn: false
         });
+        console.error("nick error:", reply.error);
       } else {
         this.setState({
           loginError: null,
