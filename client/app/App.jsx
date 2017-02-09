@@ -8,14 +8,14 @@ export default class App extends React.Component {
     this.state = {isLoggedIn: true};
   }
 
-    render() {
-      if (!this.state.isLoggedIn) {
-        return <Login />;
-      } else {
-        // TODO Draw the chat UI
-        return (
-          <div style="padding-left:256px;"></div>
-        )
-      }
+  render() {
+    if (!this.state.isLoggedIn) {
+      return <Login />;
+    } else {
+      // TODO Draw the chat UI
+      return (
+        <div style="padding-left:256px;"></div>
+      )
     }
+  }
 }
