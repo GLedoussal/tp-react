@@ -15,20 +15,27 @@ export default class Sidebar extends React.Component {
     };
 
     ws.on('useradd', (user) => {
+      const users = this.state.users.filter((u) => { return u.id !== user.id });
       this.setState({
-        users: this.state.users.concat([user])
+        users: [...users, user]
       });
     });
 
     ws.on('userdel', (id) => {
       this.setState({
-        users: this.state.users.filter((user) => user.id === id ? false : true)
+        users: this.state.users.filter((user) => user.id !== id)
       });
     });
   }
 
   render() {
-    const userItems = this.state.users.map((user) =>
+    const userItems = this.state.users.sort((a, b) => {
+      if (a.nickname.toLowerCase() < b.nickname.toLowerCase())
+        return -1;
+      if (a.nickname.toLowerCase() > b.nickname.toLowerCase())
+        return 1;
+      return 0;
+    }).map((user) =>
       <div className="user">{user.nickname}</div>
     );
     return(
