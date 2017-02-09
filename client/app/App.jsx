@@ -1,5 +1,7 @@
 import React from 'react'
 import Login from './Login'
+import Messages from './Messages'
+import Sidebar from './Sidebar'
 
 import ws from './Socket'
 
@@ -34,7 +36,12 @@ export default class App extends React.Component {
     } else {
       // TODO Draw the chat UI
       return (
-        <div style={{paddingLeft:"256px"}}></div>
+        <div>
+          <Sidebar />
+          <div style={{paddingLeft:"256px"}}>
+            <Messages />
+          </div>
+        </div>
       )
     }
   }
