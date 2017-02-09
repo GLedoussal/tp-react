@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const HtmlWebpackTemplate = require('html-webpack-template')
+const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
 
 const PATHS = {
     app: path.join(__dirname, 'app'),
@@ -52,6 +53,10 @@ const common = {
             mobile: true, // Scale page on mobile
             inject: false, // html-webpack-template requires this to work
         }),
+        new HtmlWebpackIncludeAssetsPlugin({
+            assets: ['css/normalize.css'],
+            append: false
+        })
     ],
     module: {
         rules: [
