@@ -34,8 +34,6 @@ export default class Sidebar extends React.Component {
       if (typeof x === "string") { x = x.charCodeAt(0) - 65 }
       return acc += x;
     }, 0) % this.colors.length);
-
-    console.log(index, this.colors.length);
     return this.colors[index];
 
   }
