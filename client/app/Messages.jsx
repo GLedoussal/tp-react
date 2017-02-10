@@ -31,7 +31,7 @@ class Messages extends React.Component {
             message={message}
             user={this.props.notifiers.users.find((user) => user.id === message.userId)}
             expended={(key > 0 && this.props.notifiers.messages[key-1].userId === message.userId &&
-              this.props.notifiers.messages[key-1].date <= (message.date - 10) )} />
+              this.props.notifiers.messages[key-1].date >= (message.date - 1000 * 60 * 5) )} />
           })}
         </div>
       </div>
