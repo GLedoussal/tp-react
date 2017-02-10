@@ -40,7 +40,8 @@ Messages.propTypes = {
 
 const mapStateToProps = (state) => ({
   notifiers: {
-    messages: state.messagesReducer
+    messages: state.messagesReducer,
+    users: state.usersReducer
   }
 });
 
