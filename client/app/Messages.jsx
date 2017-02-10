@@ -22,11 +22,16 @@ class Messages extends React.Component {
 
   render() {
     const messages = this.props.notifiers.messages;
+    console.log(this.props.notifiers.users);
     return (
       <div style={{position: "fixed", right: "0", top: "0", left: "0", height: "100%", overflow: "auto"}} ref={(ref) => this.container = ref}>
         <div style={{paddingBottom: "115px", paddingLeft: "256px"}}>
-          {messages.map((message) => {
-            return <Message message={message} />
+          {messages.map((message, key) => {
+            return <Message
+            message={message}
+            user={this.props.notifiers.users.find((user) => user.id === message.userId)}
+            expended={(key > 0 && this.props.notifiers.messages[key-1].userId === message.userId &&
+              this.props.notifiers.messages[key-1].date <= (message.date - 10) )} />
           })}
         </div>
       </div>
