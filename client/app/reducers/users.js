@@ -3,12 +3,18 @@ import {actions} from '../actions/users'
 export default function(state = [], action){
   switch (action.type){
     case actions.USERS_LIST:
-      return action.users;
+      // Don't display users with no nickname
+      return action.users.filter(user => user.nickname);
     case actions.ADD_USER:
-      const users = state.filter(user => user.id !== action.user.id);
-      return [...users, action.user];
+      if(action.user.nickname){
+        const users = state.filter(user => user.id !== action.user.id);
+        return [...users, action.user];
+      } else {
+        return state;
+      }
+    break;
     case actions.DEL_USER:
-      return state.filter(user => user.id !== action.user.id);
+      return state.filter(user => user.id !== action.user);
     default:
       return state;
   }
