@@ -3,7 +3,6 @@ import Login from './Login'
 import Messages from './Messages'
 import Sidebar from './Sidebar'
 import InputBox from './InputBox'
-
 import ws from './Socket'
 
 export default class App extends React.Component {

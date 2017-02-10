@@ -3,7 +3,6 @@ import React from 'react'
 export default class Message extends React.Component {
 
   render() {
-  	console.log('hello');
     return (
       <div style={{borderBottom: "1px solid #ccc", padding: "15px"}}>
       	<div>idMessage: {this.props.message.id}</div>

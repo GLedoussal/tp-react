@@ -2,19 +2,11 @@ import React from 'react'
 import Message from './Message'
 import ws from './Socket'
 
-export default class Messages extends React.Component {
+import { connect } from 'react-redux'
 
+class Messages extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      messages: []
-    };
-
-    ws.on('msg', (message) => {
-      this.setState({
-        messages: this.state.messages.concat([message])
-      });
-    });
   }
 
   scrollToBottom() {
@@ -29,10 +21,11 @@ export default class Messages extends React.Component {
   } 
 
   render() {
+    const messages = this.props.notifiers.messages;
     return (
       <div style={{position: "fixed", right: "0", top: "0", left: "0", height: "100%", overflow: "auto"}} ref={(ref) => this.container = ref}>
         <div style={{paddingBottom: "115px", paddingLeft: "256px"}}>
-          {this.state.messages.map((message) => {
+          {messages.map((message) => {
             return <Message message={message} />
           })}
         </div>
@@ -40,3 +33,15 @@ export default class Messages extends React.Component {
     )
   }
 }
+
+Messages.propTypes = {
+  notifiers: React.PropTypes.object
+};
+
+const mapStateToProps = (state) => ({
+  notifiers: {
+    messages: state.messagesReducer
+  }
+});
+
+export default connect(mapStateToProps)(Messages)
