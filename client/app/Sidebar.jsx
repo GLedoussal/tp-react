@@ -13,6 +13,7 @@ export default class Sidebar extends React.Component {
     this.state = {
       users: this.props.users
     };
+    this.colors = ["#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5", "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50", "#8BC34A", "#CDDC39", "#FFEB3B", "#FFC107", "#FF9800", "#FF5722", "#795548", "#9E9E9E", "#607D8B"];
 
     ws.on('useradd', (user) => {
       const users = this.state.users.filter((u) => { return u.id !== user.id });
@@ -28,6 +29,17 @@ export default class Sidebar extends React.Component {
     });
   }
 
+  getColor(nick) {
+    const index = Math.abs(nick.split("").reduce((acc, x) => {
+      if (typeof x === "string") { x = x.charCodeAt(0) - 65 }
+      return acc += x;
+    }, 0) % this.colors.length);
+
+    console.log(index, this.colors.length);
+    return this.colors[index];
+
+  }
+
   render() {
     const userItems = this.state.users.sort((a, b) => {
       if (a.nickname.toLowerCase() < b.nickname.toLowerCase())
@@ -36,7 +48,12 @@ export default class Sidebar extends React.Component {
         return 1;
       return 0;
     }).map((user) =>
-      <div className="user">{user.nickname}</div>
+      <div className="user" key={user.id}>
+        <span style={{display: "inline-block", height: "32px", width: "32px", backgroundColor: this.getColor(user.id), lineHeight: "32px", borderRadius: "50%", textAlign: "center", color: "#FFF", marginRight: "15px"}}>
+          {user.nickname[0].toUpperCase()}
+        </span>
+        {user.nickname}
+      </div>
     );
     return(
       <MuiThemeProvider>
