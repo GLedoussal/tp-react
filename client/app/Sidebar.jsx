@@ -11,23 +11,25 @@ import getColor from './colors';
 
 class Sidebar extends React.Component {
   render() {
-    const userItems = this.props.notifiers.users.sort((a, b) => {
-      if (a.nickname.toLowerCase() < b.nickname.toLowerCase())
-        return -1;
-      if (a.nickname.toLowerCase() > b.nickname.toLowerCase())
-        return 1;
-      return 0;
-    }).map((user) =>
-      <div className="user" key={user.id}>
-        <span style={{display: "inline-block", height: "32px",
-        width: "32px", backgroundColor: getColor(user.id),
-        lineHeight: "32px", borderRadius: "50%",
-        textAlign: "center", color: "#FFF", marginRight: "15px"}}>
-          {user.nickname[0].toUpperCase()}
-        </span>
-        {user.nickname}
-      </div>
-    );
+    const userItems = this.props.notifiers.users
+      .filter(user => user.online)
+      .sort((a, b) => {
+        if (a.nickname.toLowerCase() < b.nickname.toLowerCase())
+          return -1;
+        if (a.nickname.toLowerCase() > b.nickname.toLowerCase())
+          return 1;
+        return 0;
+      }).map((user) =>
+        <div className="user" key={user.id}>
+          <span style={{display: "inline-block", height: "32px",
+          width: "32px", backgroundColor: getColor(user.id),
+          lineHeight: "32px", borderRadius: "50%",
+          textAlign: "center", color: "#FFF", marginRight: "15px"}}>
+            {user.nickname[0].toUpperCase()}
+          </span>
+          {user.nickname}
+        </div>
+      );
     return(
       <MuiThemeProvider>
         <div>
