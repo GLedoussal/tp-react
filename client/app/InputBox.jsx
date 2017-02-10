@@ -21,7 +21,16 @@ export default class App extends React.Component {
 
   handleKeyDown(e){
     if(e.keyCode === 13){
-      ws.emit('msg', this.state.message);
+      const splitted = this.state.message.split(' ');
+
+      switch (splitted[0]){
+        case "/nick":
+          ws.emit('nick', splitted[1]);
+        break;
+        default:
+          ws.emit('msg', this.state.message);
+      }
+
       this.setState({
         message: null
       });

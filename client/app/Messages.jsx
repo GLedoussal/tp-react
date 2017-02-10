@@ -18,7 +18,7 @@ class Messages extends React.Component {
 
   componentDidUpdate() {
     this.scrollToBottom();
-  } 
+  }
 
   render() {
     const messages = this.props.notifiers.messages;
